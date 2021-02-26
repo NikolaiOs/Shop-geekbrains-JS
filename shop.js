@@ -2,10 +2,10 @@
 class List {
   _items = []
 
-  constructor(CartElem) {
+  constructor(cartElem) {
     let goods = this.fetchGoods()
     goods = goods.map(item => {
-      return new GoodItem(item, CartElem)
+      return new GoodItem(item, cartElem)
     })
     this._items = goods
     this.rendor()
@@ -44,22 +44,22 @@ class GoodItem {
   _name = ''
   _price = 0
   _img = 0
-  _CartElem = null
+  _cartElem = null
 
   constructor({
     name,
     price,
     img
-  }, CartElem) {
+  }, cartElem) {
     this._name = name
     this._price = price
     this._img = img
-    this._CartElem = CartElem
+    this._cartElem = cartElem
   }
 
   addToCart() {
-    this._CartElem.add(this)
-    console.log('sddsdsdsdsdsd', this._name)
+    this.cartElem.add(`${price}`)
+
   }
 
   // отобразить карточки
@@ -71,9 +71,8 @@ class GoodItem {
       Товар: ${this._name} = ${this._price}
       <img src="${this._img}"/>
       `
-      const btn = new Button('Добавить в корзину', this.addToCart.bind(this))
+      const btn = new Button('Купить', this.addToCart.bind(this))
       btn.render(block)
-
       placeToRender.appendChild(block)
     }
   }
@@ -85,38 +84,53 @@ class GoodItem {
 class Cart {
   _cartItems = []
 
-  add() {
-    new GoodItem()
+  constructor() {
+    this.render()
   }
 
-  rendor() {
+  add(item) {
+    if (this._cartItems > 0) {
+      this._items.forEach(Good => {
+        Good.render()
+      })
+      this._cartItems.push(new CartList(item))
+    }
+    // this._cartItems.push(new CartList(item))
+  }
+
+  render() {
     this._cartItems.forEach(Good => {
-      Good.rendor()
+      Good.render()
     })
   }
 }
 
 
 class CartList {
-  rendor() {
-    const placeToRenderCart = document.querySelector('.cart')
-    if (placeToRenderCart) {
-      const blockCart = document.createElement('div')
-      blockCart.innerHTML = `
-      <img src="${this._img}"/>
-      Товар: ${this._name} = ${this._price}
-      `
-      const btn = new Button('Добавить в корзину', this.addToCart.bind(this))
-      btn.render(block)
+  _name = ''
+  _price = 0
+  _img = 0
 
-      placeToRenderCart.appendChild(blockCart)
-    }
+  constructor({
+    name,
+    price,
+    img
+  }) {
+    this._name = name
+    this._price = price
+    this._img = img
+  }
+
+  render() {
+    const placeToRender = document.querySelector('.cart')
+    const block = document.createElement('div')
+    block.classList.add('cart-items')
+    block.innerHTML = `${this._img} ${this._name} <p>Цена: ${this._price}</p>`
+    placeToRender.appendChild(block)
   }
 }
 
 
-const CartElem = new Cart()
+const cartElem = new Cart()
 
-
-new List(CartElem)
-new Cart()
+new List(cartElem)
