@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "name": "Trousers",
+      "price": 39000,
+      "img": "./images/Trousers.jpg"
+    },
+    {
+      "name": "Boots",
+      "price": 14000,
+      "img": "./images/Boots.jpg"
+    },
+    {
+      "name": "Jacket",
+      "price": 59000,
+      "img": "./images/Jacket.jpg"
+    }
+  ]
+}
