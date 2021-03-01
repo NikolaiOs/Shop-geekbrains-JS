@@ -58,8 +58,11 @@ class GoodItem {
   }
 
   addToCart() {
-    this.cartElem.add(`${price}`)
-
+    this._cartElem.add({
+      img: this._img,
+      name: this._name,
+      price: this._price
+    })
   }
 
   // отобразить карточки
@@ -78,9 +81,6 @@ class GoodItem {
   }
 }
 
-
-
-
 class Cart {
   _cartItems = []
 
@@ -89,22 +89,20 @@ class Cart {
   }
 
   add(item) {
-    if (this._cartItems > 0) {
-      this._items.forEach(Good => {
-        Good.render()
-      })
-      this._cartItems.push(new CartList(item))
-    }
-    // this._cartItems.push(new CartList(item))
+    this._cartItems.push(new CartList(item))
+    this.render()
   }
 
   render() {
+    const block = document.querySelector('.cart')
+    if (block) {
+      block.innerHTML = '<h2 class="cart-title">Корзина</h2>'
+    }
     this._cartItems.forEach(Good => {
       Good.render()
     })
   }
 }
-
 
 class CartList {
   _name = ''
@@ -125,11 +123,10 @@ class CartList {
     const placeToRender = document.querySelector('.cart')
     const block = document.createElement('div')
     block.classList.add('cart-items')
-    block.innerHTML = `${this._img} ${this._name} <p>Цена: ${this._price}</p>`
+    block.innerHTML = `<img src="${this._img}"> ${this._name} <p>Цена: ${this._price}</p>`
     placeToRender.appendChild(block)
   }
 }
-
 
 const cartElem = new Cart()
 
