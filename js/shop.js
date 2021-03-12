@@ -3,32 +3,29 @@ class List {
   _items = []
 
   constructor(cartElem) {
-    let goods = this.fetchGoods()
-    goods = goods.map(item => {
-      return new GoodItem(item, cartElem)
-    })
-    this._items = goods
-    this.rendor()
+    // let goods = this.fetchGoods()
+    // goods = goods.map(item => {
+    //   return new GoodItem(item, cartElem)
+    // })
+    // this._items = goods
+    // this.rendor()
+    this.fetchGoods()
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        const goods = data.data.map(item => {
+          return new GoodItem(item, cartElem)
+        })
+        this._items = this._items.concat(goods)
+        this.rendor()
+      })
   }
 
   // получает товар
   fetchGoods() {
-    return [{
-        name: 'Trousers',
-        price: 39000,
-        img: './images/Trousers.jpg'
-      },
-      {
-        name: 'Boots',
-        price: 14000,
-        img: './images/Boots.jpg'
-      },
-      {
-        name: 'Jacket',
-        price: 59000,
-        img: './images/Jacket.jpg'
-      },
-    ]
+    let url = `${document.location.protocol}//${document.location.host}/database/data${List.instanceCount++}.json`
+    return fetch(url);
   }
 
   // отображает товар
