@@ -3,12 +3,6 @@ class List {
   _items = []
 
   constructor(cartElem) {
-    // let goods = this.fetchGoods()
-    // goods = goods.map(item => {
-    //   return new GoodItem(item, cartElem)
-    // })
-    // this._items = goods
-    // this.rendor()
     this.fetchGoods()
       .then(res => {
         return res.json()
@@ -24,7 +18,7 @@ class List {
 
   // получает товар
   fetchGoods() {
-    let url = `${document.location.protocol}//${document.location.host}/database/data${List.instanceCount++}.json`
+    let url = `${document.location.protocol}//${document.location.host}/database/data.json`
     return fetch(url);
   }
 
