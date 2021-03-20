@@ -1,6 +1,8 @@
 <template>
   <main>
-    <CatalogItem :item="item" />
+    <div v-for="item in data">
+      <CatalogItem :item="item" />
+    </div>
   </main>
 </template>
 
