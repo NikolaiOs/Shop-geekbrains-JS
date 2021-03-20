@@ -1,8 +1,6 @@
 <template>
   <main>
-    <div>
-      {{ name }}
-    </div>
+    <CatalogItem :item="item" />
   </main>
 </template>
 
