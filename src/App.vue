@@ -1,18 +1,18 @@
 <template>
   <div>
-    <header :class="[$style.myheader]">My first Vue!</header>
-    <main>
-      <h3>Content</h3>
-    </main>
+    <Catalog />
   </div>
 </template>
 
 <script>
-export default {};
+import Catalog from "./components/Catalog";
+
+export default {
+  components: {
+    Catalog,
+  },
+};
 </script>
 
 <style module>
-.myheader {
-  color: yellowgreen;
-}
 </style>
