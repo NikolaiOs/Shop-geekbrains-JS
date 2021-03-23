@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="cart">
     <img :src="item.img" alt="image" />
     {{ item.name }}
     {{ item.price }}

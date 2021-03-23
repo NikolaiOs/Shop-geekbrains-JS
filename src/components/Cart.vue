@@ -1,14 +1,14 @@
 <template>
   <main>
-    <h1>Товары</h1>
+    <h2>Корзина</h2>
     <div v-for="item in data">
-      <CatalogItem :item="item" />
+      <CartItem :item="item" />
     </div>
   </main>
 </template>
 
 <script>
-import CatalogItem from "./CatalogItem.vue";
+import CartItem from "./CartItem.vue";
 
 export default {
   data() {
@@ -33,7 +33,7 @@ export default {
     };
   },
   components: {
-    CatalogItem,
+    CartItem,
   },
 };
 </script>
