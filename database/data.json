@@ -1,19 +1,5 @@
 {
-  "data": [
-    {
-      "name": "Trousers",
-      "price": 39000,
-      "img": "./images/Trousers.jpg"
-    },
-    {
-      "name": "Boots",
-      "price": 14000,
-      "img": "./images/Boots.jpg"
-    },
-    {
-      "name": "Jacket",
-      "price": 59000,
-      "img": "./images/Jacket.jpg"
-    }
-  ]
+  "1": { "id": 1, "name": "Trousers", "price": 39000, "img": "./images/Trousers.jpg"},
+  "2": { "id": 2, "name": "Boots", "price": 14000, "img": "./images/Boots.jpg"},
+  "3": { "id": 3, "name": "Jacket", "price": 59000, "img": "./images/Jacket.jpg"}
 }
